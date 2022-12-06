@@ -25,7 +25,7 @@ class _AuthScreenState extends State<AuthScreen> {
     String email,
     String password,
     String username,
-    File image,
+    // File image,
     bool isLogin,
     BuildContext ctx,
   ) async {
@@ -46,14 +46,14 @@ class _AuthScreenState extends State<AuthScreen> {
           password: password,
         );
 
-        final ref = FirebaseStorage.instance
-            .ref()
-            .child('user_image')
-            .child(authResult.user.uid + '.jpg');
+        // final ref = FirebaseStorage.instance
+        //     .ref()
+        //     .child('user_image')
+        //     .child(authResult.user.uid + '.jpg');
 
-        await ref.putFile(image);
+        // await ref.putFile(image);
 
-        final url = await ref.getDownloadURL();
+        // final url = await ref.getDownloadURL();
 
         await FirebaseFirestore.instance
             .collection('users')
@@ -62,7 +62,7 @@ class _AuthScreenState extends State<AuthScreen> {
           {
             'username': username,
             'email': email,
-            'image_url': url,
+            // 'image_url': url,
           },
         );
       }
@@ -80,12 +80,7 @@ class _AuthScreenState extends State<AuthScreen> {
             key: _scaffoldKey,
             backgroundColor: Theme.of(ctx).errorColor),
       );
-      // Scaffold.of(ctx).showBottomSheet((BuildContext ctx) {
-      //   showAboutDialog(context: ctx);
 
-      //   return Text(message);
-      //   dispose();
-      // });
       setState(() {
         _isLoading = false;
       });

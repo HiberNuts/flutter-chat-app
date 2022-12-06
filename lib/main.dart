@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:new_chat_firebase/screens/auth_screen.dart';
 import 'package:new_chat_firebase/screens/chat_screen.dart';
 import 'package:new_chat_firebase/screens/splashScreen.dart';
+import 'package:new_chat_firebase/screens/welcome.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,8 +41,11 @@ class MyApp extends StatelessWidget {
             if (userSnapshot.connectionState == ConnectionState.waiting) {
               return const SplashScreen();
             }
+            // if (userSnapshot.hasData) {
+            //   return const ChatScreen();
+            // }
             if (userSnapshot.hasData) {
-              return const ChatScreen();
+              return const WelcomeScreen();
             }
             return const AuthScreen();
           }),

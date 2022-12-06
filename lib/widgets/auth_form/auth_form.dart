@@ -15,8 +15,7 @@ class AuthForm extends StatefulWidget {
 
   final bool isLoading;
 
-  final void Function(String email, String password, String username,
-      File image, bool isLogin, BuildContext ctx) submitFn;
+  final void Function(String email, String password, String username, bool isLogin, BuildContext ctx) submitFn;
 
   @override
   State<AuthForm> createState() => _AuthFormState();
@@ -28,22 +27,22 @@ class _AuthFormState extends State<AuthForm> {
   String _userEmail = '';
   String _userName = '';
   String _userPassword = '';
-  var _userImageFile;
+  // var _userImageFile;
 
-  void _pickedImage(File image) {
-    _userImageFile = image;
-  }
+  // void _pickedImage(File image) {
+  //   _userImageFile = image;
+  // }
 
   void _trySubmit() {
     final isValid = _formKey.currentState.validate();
     FocusScope.of(context).unfocus();
 
-    if (_userImageFile == null && !_isLogin) {
-      Scaffold.of(context).showSnackBar(SnackBar(
-          content: const Text('Please add an image!'),
-          backgroundColor: Theme.of(context).errorColor));
-      return;
-    }
+    // if (_userImageFile == null && !_isLogin) {
+    //   Scaffold.of(context).showSnackBar(SnackBar(
+    //       content: const Text('Please add an image!'),
+    //       backgroundColor: Theme.of(context).errorColor));
+    //   return;
+    // }
 
     if (isValid) {
       _formKey.currentState.save();
@@ -51,7 +50,7 @@ class _AuthFormState extends State<AuthForm> {
         _userEmail.trim(),
         _userPassword.trim(),
         _userName.trim(),
-        _userImageFile,
+        // _userImageFile,
         _isLogin,
         context,
       );
@@ -71,7 +70,7 @@ class _AuthFormState extends State<AuthForm> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (!_isLogin) userImagePicker(imagePickFn: _pickedImage),
+                  // if (!_isLogin) userImagePicker(imagePickFn: _pickedImage),
                   TextFormField(
                     key: const ValueKey('email'),
                     validator: (value) {
